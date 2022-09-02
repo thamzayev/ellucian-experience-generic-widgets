@@ -10,7 +10,8 @@ import {
   TableBody
 } from "@ellucian/react-design-system/core";
 import { Icon } from "@ellucian/ds-icons/lib";
-const QuickButtonLinksTemplateConfig = (props) => {
+
+const QuickButtonPageTemplateConfig = (props) => {
   const {
     cardControl: { setCustomConfiguration, setIsCustomConfigurationValid },
     cardInfo: {
@@ -19,32 +20,32 @@ const QuickButtonLinksTemplateConfig = (props) => {
   } = props;
 
   const client = customConfiguration ? customConfiguration.client : undefined;
-  const [links, setLinks] = React.useState(
-    client ? client.links : [{ label: "", url: "" }]
+  const [pages, setPages] = React.useState(
+    client ? client.pages : [{ title: "", content: "" }]
   );
 
   const handleChange = (i, e) => {
-    const newLinks = [...links];
-    newLinks[i][e.target.name] = e.target.value;
-    setLinks(newLinks);
+    const newPages = [...pages];
+    newPages[i][e.target.name] = e.target.value;
+    setPages(newPages);
 
     setCustomConfiguration({
       customConfiguration: {
         client: {
-          links: newLinks
+          pages: newPages
         }
       }
     });
   };
 
   const addLink = () => {
-    setLinks([...links, { name: "", email: "" }]);
+    setPages([...pages, { title: "", content: "" }]);
   };
 
   const removeLink = (i) => {
-    const newLinks = [...links];
-    newLinks.splice(i, 1);
-    setLinks(newLinks);
+    const newPages = [...pages];
+    newPages.splice(i, 1);
+    setPages(newPages);
   };
 
   const handleBlur = (e) => {
@@ -57,32 +58,36 @@ const QuickButtonLinksTemplateConfig = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>Text</TableCell>
-            <TableCell>Url</TableCell>
+            <TableCell>Content</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {links.map((element, index) => {
+          {pages.map((element, index) => {
             return (
               <TableRow key={index}>
                 <TableCell component="th" scope="row">
                   <TextField
-                    label="Label"
+                    label="Title"
                     margin="normal"
-                    name="label"
+                    name="title"
                     onBlur={handleBlur}
                     onChange={(e) => handleChange(index, e)}
-                    value={element.label}
+                    placeholder="Title for Page"
+                    value={element.title}
+                    fullWidth
                   />
                 </TableCell>
                 <TableCell>
                   <TextField
-                    label="URL"
+                    label="Content"
                     margin="normal"
-                    name="url"
+                    name="content"
                     onBlur={handleBlur}
                     onChange={(e) => handleChange(index, e)}
-                    value={element.url}
+                    value={element.content}
+                    fullWidth
+                    multiple
                   />
                 </TableCell>
                 <TableCell>
@@ -106,9 +111,9 @@ const QuickButtonLinksTemplateConfig = (props) => {
   );
 };
 
-QuickButtonLinksTemplateConfig.propTypes = {
+QuickButtonPageTemplateConfig.propTypes = {
   cardControl: PropTypes.object,
   cardInfo: PropTypes.object
 };
 
-export default QuickButtonLinksTemplateConfig;
+export default QuickButtonPageTemplateConfig;
