@@ -3,7 +3,7 @@ import { spacing20 } from "@ellucian/react-design-system/core/styles/tokens";
 import reactHtmlParser from "html-react-parser";
 import PropTypes from "prop-types";
 import React from "react";
-import { usePageControl } from "@ellucian/experience-extension/extension-utilities";
+import { usePageControl } from "@ellucian/experience-extension-utils";
 import { useParams } from "react-router-dom";
 const styles = () => ({
   card: {

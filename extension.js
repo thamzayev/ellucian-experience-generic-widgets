@@ -8,8 +8,9 @@ module.exports = {
         "displayCardType": "Quick Button Links",
         "description": "List of links as Buttons",
         "template": {
-            "image": "./src/assets/quickbuttonlinks.png",
-            "title": "Quick Button Links Template"
+            "icon": "align-justify",
+            "title": "Quick Button Links Template",
+            "description":"Quick Link lists where links are stylized like Buttons"
         },
         "customConfiguration": {
             "source": "./src/cards/QuickButtonLinksTemplateConfig.jsx"
@@ -22,8 +23,9 @@ module.exports = {
         "displayCardType": "Quick Button Pages",
         "description": "List of pages accessed through card with Buttons",
         "template": {
-            "image": "./src/assets/quickbuttonpages.png",
-            "title": "Quick Button Pages Template"
+            "icon": "applications",
+            "title": "Quick Button Pages Template",
+            "description":"Quick Link lists to pages where links are stylized like Buttons"
         },
         "customConfiguration": {
             "source": "./src/cards/QuickButtonPagesTemplateConfig.jsx"
